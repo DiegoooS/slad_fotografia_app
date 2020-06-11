@@ -1,0 +1,9 @@
+const express = require('express');
+const app = express();
+
+const logger = require('./startup/logger');
+require('./startup/db')();
+require('./startup/routes')(app);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => logger.info(`Listening on port ${port}...`));
