@@ -1,0 +1,47 @@
+.gallery li {
+    cursor: pointer;
+}
+
+.marked {
+    opacity: 0.6;
+}
+
+.pictureMenu {
+    display: none;
+}
+
+.manager__logo__image {
+    width: 40px;
+    height: auto;
+}
+
+.manager__menu {
+    font-size: 22px;
+}
+
+.error__frame {
+    border: none;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+}
+
+.gallery__error {
+    color: red;
+}
+
+.custom-file-input:hover {
+    cursor: pointer;
+}
+
+.photos__picture__container {
+    height: 300px;
+    width: 300px;
+}
+
+.centered-and-cropped {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+

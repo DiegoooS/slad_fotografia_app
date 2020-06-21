@@ -1,0 +1,71 @@
+.aboutMe-header {
+    margin-top: 150px;
+}
+
+.aboutMe-header__bg {
+    height: 50vh;
+    z-index: -1;
+    top: 0;
+}
+
+.aboutMe-header__image {
+    height: 450px;
+    width: auto;
+}
+
+.aboutMe-header__text h1 {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.aboutMe-header__text h2 {
+    font-size: 25px;
+    font-weight: 250;
+}
+
+.aboutMe-header__text h3 {
+    font-size: 35px;
+    font-weight: 350;
+}
+
+.aboutMe-main {
+    margin-top: 150px
+}
+
+.aboutMe-main h1 {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.aboutMe-main p {
+    text-indent: 5%;
+    text-align: justify;
+}
+
+.about_me-footer {
+    top: 350px;
+}
+
+@media only screen and (max-width: 991px) {
+    .aboutMe-header {
+        top: 100px;
+    }
+
+    .aboutMe-header__bg {
+        display: none;
+        
+    }
+
+    .aboutMe-header__image {
+        height: 300px;
+        margin-bottom: 25px;
+    }
+
+    .aboutMe-header {
+        text-align: center;
+    }
+
+    .p-header__socials {
+        justify-content: center;
+    }
+}

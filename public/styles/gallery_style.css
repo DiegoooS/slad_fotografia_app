@@ -1,0 +1,22 @@
+.gallery-main {
+    top: 100px;
+}
+
+.gallery-main__category {
+    height: 500px;
+    transition: opacity 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery-main__category__text p:first-child {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.gallery-main__category__text p:last-child span {
+    font-size: 13px;
+}
+
+.gallery-main__category:hover {
+    opacity: 0.8;
+}

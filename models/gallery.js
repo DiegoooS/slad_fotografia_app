@@ -9,9 +9,11 @@ const gallerySchema = new mongoose.Schema({
         maxlength: 50,
         required: true
     },
-    picturesAmount: {
-        type: Number,
-    }
+    dateOut: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
 });
 
 const Gallery = mongoose.model('gallery', gallerySchema);
@@ -26,3 +28,4 @@ function  validateGallery(gallery) {
 
 module.exports.Gallery = Gallery;
 module.exports.validate = validateGallery;
+module.exports.gallerySchema = gallerySchema;

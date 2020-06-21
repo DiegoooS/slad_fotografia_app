@@ -1,0 +1,293 @@
+/* HEADER */
+
+.p-header {
+    background-color: black;
+}
+
+.p-header__navbar {
+    transition: background-color 0.2s ease-in-out;
+    z-index: 20000;
+}
+
+.p-header__bg {
+    background-image: url("Images/header_gallery/zdj_3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.8;
+    transition: background-image 0.2s cubic-bezier(0.62, 1.04, 1, 1);
+}
+
+.p-header__logo__image {
+    width: 35px;
+    height: 55px;
+    opacity: 0.9;
+    filter: invert(1);
+}
+
+.p-header__logo:hover {
+    opacity: 0.7;
+}
+
+.p-header__navitem {
+    font-size: 25px;
+    margin-right: 15px;
+}
+
+.p-header__navitem::after {
+    content: '';
+    display: flex;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width .2s;
+    margin-top: 5px;
+}
+
+.p-header__navitem:hover::after {
+    width: 100%;
+}
+
+.p-header__content {
+    flex-grow: 1;
+    color: white;
+}
+
+.p-header__content h1 {
+    font-size: 80px;
+}
+
+.p-header__content h2 {
+    font-size: 20px;
+    opacity: 0.9;
+    font-weight: 15;
+    margin-bottom: 140px;
+}
+
+.p-header__content__element {
+    font-size: 45px;
+    margin-top: 20px;
+    font-weight: 550;
+    cursor: pointer;
+    letter-spacing: 2px;
+    width: 300px;
+    letter-spacing: 2px;
+}
+
+.p-header__content__element__active {
+    background-color: white;
+    color: black;
+}
+
+.p-header__socials {
+    font-size: 15px;
+    margin-top: 40px;
+}
+
+.p-header__socials li {
+    padding: 10px;
+    text-align: center;
+}
+
+.p-header__socials li a:hover {
+    background-color: black;
+    color: white;
+}
+
+.p-header__socials li a {
+    color: white;
+    color: black;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+}
+
+/* MAIN */
+.p-main__images__row__item {
+    height: 50vh;
+    cursor: pointer;
+}
+
+.image__hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #D3D3D3 !important;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0 15px 0 15px;
+    background-clip: content-box;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.image__hover span {
+    font-size: 25px;
+}
+
+.image__hover span i {
+    transition: color 0.2s ease-in-out;
+}
+
+.image__hover span i:hover {
+    color: #B22222;
+}
+
+.image__hover:hover {
+    opacity: 1;
+}
+
+.centered-and-cropped { 
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.p-main__aboutme {
+    background: 
+        linear-gradient(
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+        ),
+        url(Images/image_aboutme_1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 50vh;
+}
+
+.p-main__aboutme__text h4 {
+    font-weight: 700;
+}
+
+.p-main__carosuel {
+    height: 60vh;
+}
+
+.p-main__carosuel__image {
+    filter: brightness(0.65);
+}
+
+/* FOOTER*/
+
+.p-footer__header {
+    border-bottom: 1px solid #343a40;
+}
+
+.p-footer__text {
+    text-align: justify;
+}
+
+.p-footer {
+    font-size: 12px;
+}
+
+.p-footer a {
+    font-size: 20px !important;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.p-footer hover {
+    opacity: 0.7;
+}
+
+.p-modal {
+    position: fixed;
+    display: none;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.p-modal__bg {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.p-modal__close {
+    font-size: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.p-modal__close:hover {
+    opacity: 0.7;
+}
+
+.p-modal__image__container {
+    width: 100%;
+    height: 100%;
+}
+
+.p-modal__image {
+    width: auto;
+    height: 90%;
+    z-index: 1;
+    transform: scale(0);
+    transition: all 0.5s ease-in-out;
+}
+
+.p-loading {
+    position: fixed;
+    display: flex;
+    z-index: 1032;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.p-loading div {
+    width: 150px;
+    height: 150px;
+}
+
+@media only screen and (max-width: 991px) {
+    .p-header__content h1 {
+        font-size: 40px;
+    }
+
+    .p-header__content h2 {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .p-header__content__element {
+        display: none;
+    }
+
+    .p-header__collapse__content ul {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .p-header__socials {
+        margin-top: 10px;
+    }
+
+    .p-main__aboutme {
+        height: 70vh;
+    }
+
+    .p-main__aboutme__text h4 {
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    .p-modal__image {
+        width: 90%;
+        height: auto;
+    }
+  }

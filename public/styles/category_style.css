@@ -1,0 +1,16 @@
+.category-main {
+    top: 100px;
+}
+
+.category-main__gallery__column__element {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
+
+.category-main__gallery__column__element div {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
