@@ -45,3 +45,11 @@
     width: 100%;
 }
 
+.error-info {
+    color: red;
+}
+
+.file-upload-error {
+    color: red;
+}
+

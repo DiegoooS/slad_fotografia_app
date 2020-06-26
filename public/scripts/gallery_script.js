@@ -5,7 +5,7 @@ const galleriesContainer = document.querySelector('.gallery-main__gallery');
 function openGallery (galleryToLocal, pictureNumberToLocal) {
     localStorage.setItem("category", galleryToLocal);
     localStorage.setItem("pictureNumber", pictureNumberToLocal);
-    window.open("../Gallery/categories/category.html" , "_self");
+    window.open("../Gallery/categories/" , "_self");
 }
 
 function createNode(element) {
@@ -77,6 +77,32 @@ async function getAllGalleries() {
             append(div_8, p_1);
             append(div_8, p_2);
 
+            const div_9 = createNode('div');
+            div_9.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'h-100', 'w-100');
+            const div_10 = createNode('div');
+            div_10.classList.add('spinner-border');
+            div_10.role = 'status';
+            const span = createNode('span');
+            span.classList.add('sr-only');
+            span.innerHTML = 'Loading...';
+            append(div_9, div_10)
+            append(div_10, span);
+
+            img_1.style.display = 'none';
+            img_2.style.display = 'none';
+            img_3.style.display = 'none';
+
+            const div_9_clone_1 = div_9.cloneNode(true);
+            const div_9_clone_2 = div_9.cloneNode(true);
+
+            append(div_3, div_9);
+            append(div_6, div_9_clone_1);
+            append(div_7, div_9_clone_2);
+
+            img_1.addEventListener('load', endLoad);
+            img_2.addEventListener('load', endLoad);
+            img_3.addEventListener('load', endLoad);
+
 
             append(div_5, div_6);
             append(div_5, div_7);
@@ -87,11 +113,16 @@ async function getAllGalleries() {
             append(div_1, div_8);
             append(galleriesContainer, div_1);
             });
-            
         })
         .catch((err) => {
             console.log(err);
         });
+}
+
+function endLoad() {
+    this.style.display = 'block';
+    this.nextSibling.classList.remove('d-flex');
+    this.nextSibling.style.display = 'none';
 }
 
 async function getPictures() {

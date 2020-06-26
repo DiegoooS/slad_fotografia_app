@@ -7,7 +7,7 @@ const gallerySchema = new mongoose.Schema({
         type: String,
         minlength: 3,
         maxlength: 50,
-        required: true
+        required: true,
     },
     dateOut: {
         type: Date,

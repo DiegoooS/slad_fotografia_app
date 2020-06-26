@@ -1,4 +1,7 @@
 
+const sharp = require('sharp');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 const fs = require('fs');
 const multer = require('multer');
 const { Picture, validate } = require('../models/picture');
@@ -37,44 +40,53 @@ router.get('/', async(req, res) => {
     res.send(pictures);
 });
 
-router.post('/', async(req, res) => {
+router.post('/', [auth, admin] , async(req, res) => {
     upload (req, res, async function (err) {
         if (err instanceof multer.MulterError) {
             return res.status(400).send(err.message);
         } else if (err) {
             return res.status(400).send(err.message);
-        }
+    }
 
-        if(req.files === 'undefined' || req.files.length === 0) return res.status(400).send('No picture sended.');
+    if(!req.files || req.files === 'undefined' || req.files.length === 0) return res.status(400).send('No picture sended.');
 
-        const gallery = await Gallery.findById(req.body.galleryId);
+    const gallery = await Gallery.findById(req.body.galleryId);
 
-        req.files.forEach(async function(pic) {
-            {
-                const picture = new Picture({
-                    originalname: pic.originalname,
-                    mimetype: pic.mimetype,
-                    size: pic.size,
-                    fieldname: pic.fieldname,
-                    encoding: pic.encoding,
-                    destination: pic.destination,
-                    filename: pic.filename,
-                    path: pic.path,
-                    gallery: {
-                        _id: gallery._id,
-                        name: gallery.name
-                    }
-                });
-
-                await picture.save();
-            }
+    req.files.forEach(async function(pic) {
+        sharp(pic.path)
+        .resize({ width: 1024 })
+        .toBuffer()
+        .then( data => {
+            fs.writeFileSync(pic.path, data);
+        })
+        .catch( err => {
+            console.log(err);
         });
-        res.send(req.files);
+        {
+            const picture = new Picture({
+                originalname: pic.originalname,
+                mimetype: pic.mimetype,
+                size: pic.size,
+                fieldname: pic.fieldname,
+                encoding: pic.encoding,
+                destination: pic.destination,
+                filename: pic.filename,
+                path: pic.path,
+                gallery: {
+                    _id: gallery._id,
+                    name: gallery.name
+                }
+            });
+
+            await picture.save();
+        }
+    });
+    res.send(req.files);
     });
 });
 
-router.delete('/:id', validateObjectId , async(req, res) => {
-    const picture = await Picture.findById(req.params.id);
+router.delete('/:id', [auth, admin], validateObjectId , async(req, res) => {
+    const picture = await Picture.findById(req.params.id);  
     if(!picture) return res.status(404).send('Picture not found');
     fs.unlink(`public/uploads/${picture.filename}`, async(err) => {
         if (err) return res.status(404).send('File not found');

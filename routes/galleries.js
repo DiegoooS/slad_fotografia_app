@@ -1,4 +1,6 @@
 
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 const fs = require('fs');
 const validateObjectId = require('../middleware/validateObjectId');
 const cors = require('cors');
@@ -20,7 +22,7 @@ router.get('/:id', validateObjectId, async(req, res) => {
     res.send(gallery);
 });
 
-router.post('/', async(req, res) => {
+router.post('/',[auth, admin], async(req, res) => {
     const { error } = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
@@ -41,7 +43,7 @@ router.post('/', async(req, res) => {
     res.send(gallery);
 });
 
-router.put('/:id', validateObjectId, async(req, res) => {
+router.put('/:id', [auth, admin], validateObjectId, async(req, res) => {
     const { error } = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
@@ -54,7 +56,7 @@ router.put('/:id', validateObjectId, async(req, res) => {
     res.send(gallery);
 });
 
-router.delete('/:id', validateObjectId , async(req, res) => {
+router.delete('/:id', [auth, admin] , validateObjectId , async(req, res) => {
     const gallery = await Gallery.findById(req.params.id);
     if(!gallery) return res.status(404).send('Gallery with the given Id was not found in database');
 

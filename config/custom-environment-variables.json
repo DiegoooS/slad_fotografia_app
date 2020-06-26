@@ -1,3 +1,4 @@
 {
+    "jwtPrivateKey": "slad_jwtPrivateKey",
     "db": "slad_db"
 }

@@ -73,5 +73,5 @@ headerContentElement.forEach(element => element.addEventListener('mouseover', ch
 window.addEventListener('scroll', debounce(stickyNavOnScroll));
 window.addEventListener('load', () => {loading.style.opacity = '0';});
 loading.addEventListener('transitionend', () => {loading.style.display = 'none'});
-imagesButton.forEach(button => button.addEventListener('click', () => {window.open("Gallery/gallery.html" , "_self");}))
-aboutMeButton.addEventListener('click', () => {window.open("about_me/about_me.html" , "_self");});
+imagesButton.forEach(button => button.addEventListener('click', () => {window.open("Gallery/" , "_self");}))
+aboutMeButton.addEventListener('click', () => {window.open("about_me/" , "_self");});
