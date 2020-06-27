@@ -42,7 +42,7 @@ async function logIn() {
 }
 
 function checkIfLogged() {
-    if(localStorage.getItem("x-auth-token")) window.location.replace(`${window.location.origin}/manager/manager.html`);
+    if(localStorage.getItem("x-auth-token")) window.location.replace(`${window.location.origin}/manager/gallery/`);
 }
 
 submitLogin.addEventListener('click', logIn);

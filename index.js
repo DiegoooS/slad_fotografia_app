@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const logger = require('./startup/logger');
+require('./startup/handleRejection')();
 require('./startup/config')();
 require('./startup/db')();
 require('./startup/routes')(app);

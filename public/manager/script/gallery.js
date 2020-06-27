@@ -121,7 +121,7 @@ async function getPictures() {
             data.forEach(picture => {
                 if(this.firstChild.innerHTML === picture.gallery.name) {
                     const img = createNode('img');
-                    img.src = `../uploads/${picture.filename}`;
+                    img.src = `../../uploads/${picture.filename}`;
                     img.classList.add('centered-and-cropped');
                     img.addEventListener('click', markPicture);
                     img.id = picture._id;

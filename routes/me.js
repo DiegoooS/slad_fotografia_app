@@ -1,3 +1,5 @@
+const auth = require('../middleware/auth');
+const isAdmin = require('../middleware/admin');
 const validateObjectId = require('../middleware/validateObjectId');
 const express = require('express');
 const router = express.Router();
@@ -9,7 +11,7 @@ router.get('/', async(req, res) => {
     return res.send(me);
 });
 
-router.post('/', async(req, res) => {
+router.post('/', [auth, isAdmin] ,async(req, res) => {
     const { error } = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
@@ -22,7 +24,7 @@ router.post('/', async(req, res) => {
     res.send(me);
 });
 
-router.put('/:id', validateObjectId ,async(req, res) => {
+router.put('/:id', [auth, isAdmin, validateObjectId] ,async(req, res) => {
     const { error } = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 

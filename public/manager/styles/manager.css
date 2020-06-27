@@ -53,3 +53,7 @@
     color: red;
 }
 
+.p-main__form__aboutMe {
+    height: 70vh !important;
+}
+
