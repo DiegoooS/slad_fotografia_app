@@ -12,7 +12,7 @@ router.post('/', async(req,res) => {
     sgMail.setApiKey(config.get('SENDGRID_API_KEY'));
 
     const message = {
-        to: 'blackwarg21@gmail.com',
+        to: 'slad.fotografia@gmail.com',
         from: `sladwebsitemailer@gmail.com`,
         subject: `Email from ${req.body.name} sended via website`,
         text: `From: ${req.body.email} : ${req.body.text}`,
