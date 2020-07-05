@@ -38,7 +38,6 @@
 }
 
 .aboutMe-main p {
-    text-indent: 5%;
     text-align: justify;
 }
 
@@ -53,7 +52,6 @@
 
     .aboutMe-header__bg {
         display: none;
-        
     }
 
     .aboutMe-header__image {

@@ -1,3 +1,4 @@
+
 const galleryError = document.querySelector('.gallery__error');
 const gallery = document.querySelector('.gallery');
 const galleryInput = document.querySelector('.gallery_name');

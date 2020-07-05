@@ -49,25 +49,27 @@
         </header>
         <main>
             <div class="container min-vh-100 contact-main text-center">
-                <h1 class="display-4">Masz jakieś pytania?</h1>
+                <h1 class="display-3">Masz jakieś pytania?</h1>
                 <span class="d-flex justify-content-center align-items-center mt-3"><i class="fas fa-globe-europe"></i><p class="m-0 ml-3">Europa: Polska</p></span>
+                <span class="d-flex justify-content-center align-items-center mt-3"><i class="far fa-envelope"></i><p class="m-0 ml-3">Email: slad.fotografia@gmail.com</p></span>
                 <div class="row mt-5">
                     <div class="col-lg-6">
                         <span class="contact-main__icon"><i class="fas fa-envelope-open-text"></i></span>
                     </div>
                     <div class="col-lg-6 d-flex align-items-center">
-                        <form class="w-100 text-left">
+                        <form class="w-100 text-left" action="javascript:void(0);">
                             <div class="form-group">
-                              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                              <input type="email" class="form-control contact-main__form__email" id="InputEmail1" aria-describedby="emailHelp" placeholder="Email" minlength="3" maxlength="30" required>
                               <small id="emailHelp" class="form-text text-muted">Nie dzielę się twoim adresem email z nikim innym.</small>
                             </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" id="InputName1" placeholder="Imię">
+                              <input type="text" class="form-control contact-main__form__name" id="InputName1" placeholder="Imię" minlength="3" maxlength="50" required>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="Textarea1" rows="3" placeholder="Napisz do mnie!"></textarea>
+                                <textarea class="form-control contact-main__form__text" id="Textarea1" rows="3" placeholder="Napisz do mnie!" minlength="5" maxlength="300" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-outline-dark btn-lg font-weight-light">Wyślij wiadomość</button>
+                            <button type="submit" class="btn btn-outline-dark btn-lg font-weight-light contact-main__form__submit">Wyślij wiadomość</button>
+                            <div class="alert alert-info contact-main__info mt-3" role="alert"></div>
                         </form>
                     </div>
                 </div>

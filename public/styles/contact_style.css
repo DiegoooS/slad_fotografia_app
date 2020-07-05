@@ -12,3 +12,7 @@
     font-weight: 10 !important;
     opacity: 0.7;
 }
+
+.contact-main__info {
+    display: none;
+}

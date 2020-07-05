@@ -10,7 +10,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', cors() ,async(req, res) => {
-    const galleries = await Gallery.find().sort('name');
+    const galleries = await Gallery.find().sort('-dateOut');
 
     res.send(galleries);
 });

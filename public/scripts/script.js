@@ -1,3 +1,5 @@
+
+const randomImages = document.querySelectorAll('.random_image_container');
 const headerBg = document.querySelector('.p-header__bg');
 const headerContentElement = document.querySelectorAll('.p-header__content__element')
 const newsImageHover = document.querySelectorAll('.news__image__hover');
@@ -14,6 +16,12 @@ const closeModal = document.querySelector('.p-modal__close');
 const modalBg = document.querySelector('.p-modal__bg');
 const srcModalImage = document.querySelector('.p-modal__image');
 
+//Carousel
+const carouselTitle1 = document.querySelector('.p-main__carosuel__title_1');
+const carouselTitle2 = document.querySelector('.p-main__carosuel__title_2');
+const carouselTitle3 = document.querySelector('.p-main__carosuel__title_3');
+const carouselImages = document.querySelectorAll('.p-main__carosuel__image');
+
 async function getNewImages() {
   await fetch(`${window.location.origin}/api/pictures`)
         .then((resp) => resp.json())
@@ -21,6 +29,12 @@ async function getNewImages() {
             let counter = 0;
             newImages.forEach(item => {
               item.src = data.length > counter ? `../../uploads/${data[counter].filename}` : `../../uploads/blank.png`;
+              counter++;
+            });
+
+            counter = 0;
+            randomImages.forEach(item => {
+              item.src = data.length > counter ? `../../uploads/${data[Math.floor(Math.random() * data.length)].filename}`: `../../uploads/blank.png`;
               counter++;
             });
         })
@@ -31,7 +45,6 @@ async function getNewImages() {
 getNewImages();
 
 function changeHeaderTheme() {
-    console.log(this);
     headerContentElement.forEach(noActive => noActive.classList.remove('p-header__content__element__active'));
     this.classList.add('p-header__content__element__active');
 
@@ -64,6 +77,48 @@ function debounce(func, wait = 14, immediate = true) {
     srcModalImage.src = this.childNodes[3].src;
     setTimeout(() => {srcModalImage.style.transform = 'scale(1)';}, 100);
  }
+
+ function getGalleries() {
+  fetch(`${window.location.origin}/api/galleries`)
+  .then((resp) => resp.json())
+  .then((data) => {
+      let listOfGalleries;
+      if(data.length >= 3) listOfGalleries = [data[0].name, data[1].name, data[2].name];
+      if(data.length === 2) listOfGalleries = [data[0].name, data[1].name, 'Galeria nie istnieje'];
+      if(data.length === 1) listOfGalleries = [data[0].name, 'Galeria nie istnieje', 'Galeria nie istnieje'];
+      if(data.length < 1) listOfGalleries = ['Galeria nie istnieje', 'Galeria nie istnieje', 'Galeria nie istnieje'];
+
+      carouselTitle1.innerHTML = listOfGalleries[0];
+      carouselTitle2.innerHTML = listOfGalleries[1];
+      carouselTitle3.innerHTML = listOfGalleries[2];
+
+      getPictures(listOfGalleries);
+  })
+  .catch((err) => {
+      console.log(err);
+  });
+}
+getGalleries();
+
+function getPictures(galleryNames) {
+  fetch(`${window.location.origin}/api/pictures`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          for(let i = 0; i < 3; i++) {
+
+            data.some(function(value, index, _arr) {
+              if(galleryNames[i] === value.gallery.name) {
+                carouselImages[i].src = `../uploads/${value.filename}`;
+              }
+
+              return galleryNames[i] === value.gallery.name;
+            });
+          }
+        })
+        .catch((err) => {
+            console.log('Error:', err);
+        });
+}
 
 
 openModalImages.forEach(image => image.addEventListener('click', openModal));
