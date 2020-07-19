@@ -105,9 +105,31 @@
 }
 
 /* MAIN */
+.p-main__images__news__gallery__container {
+    width: 70vw !important;
+}
+
 .p-main__images__row__item {
     height: 50vh;
     cursor: pointer;
+}
+
+.p-main__images__row__item__gallery {
+    height: 25vh;
+}
+
+.image__gallery__hover {
+    background-color: #343a40;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0 15px 0 15px;
+    color: white;
+    font-size: 22px !important;
+    width: 0px;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
 }
 
 .image__hover {

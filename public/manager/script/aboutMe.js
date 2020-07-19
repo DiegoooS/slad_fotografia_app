@@ -17,7 +17,7 @@ getText();
 
 async function updateText() {
     checkIfLogged();
-    const url = `${window.location.origin}/api/me/5f01f789b3ebbf001798f5a9`;
+    const url = `${window.location.origin}/api/me/5ee93e82d6ea1c0b50f08f1b`;
 
     const fetchData = {
         method: 'PUT',
